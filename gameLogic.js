@@ -23,16 +23,16 @@ if someone on gets to 10 square wins
 
 import {Canvas2dGraphics} from './gameCanvas.js';
 const canvas=document.getElementById('canvas'),
-      _canvasObj=new Canvas2dGraphics(canvas),
+      canvasObj=new Canvas2dGraphics(canvas),
       WIDTH=500,
       HEIGHT=500,
       numCol=10,
       numRow=10,
       boxSize=WIDTH/numCol,
-      player1Color="red",
-      player2Color="blue",
+      player1Color="orange",
+      player2Color="black",
       canvasPlayer=document.createElement('canvas'),
-      _canvasPlayerObj=new Canvas2dGraphics(canvasPlayer);
+      canvasPlayerObj=new Canvas2dGraphics(canvasPlayer);
 
 //Variables
 var boxArr=[],
@@ -64,7 +64,7 @@ canvas.width=WIDTH;
 canvas.height=HEIGHT;
 canvasPlayer.width=300;
 canvasPlayer.height=300;
-canvasPlayer.style.background='#000';
+canvasPlayer.style.background='brown';
 canvasPlayer.style.float='left';
 document.body.appendChild(canvasPlayer);
 
@@ -86,16 +86,16 @@ window.addEventListener('keydown',(e)=>{
 });
 
 function drawPlayerDetails(){
-    _canvasPlayerObj.ClearCanvas(0,0,canvasPlayer.width,canvasPlayer.height);
-    _canvasPlayerObj.FillText('Player 1',20,30,player1Color,'25px Arial');
-    _canvasPlayerObj.FillCircle(150,20,boxSize/3,0,2*Math.PI,false,player1Color);
-    _canvasPlayerObj.FillText('Player 2',20,70,player2Color,'25px Arial');
-    _canvasPlayerObj.FillCircle(150,60,boxSize/3,0,2*Math.PI,false,player2Color);
+    canvasPlayerObj.ClearCanvas(0,0,canvasPlayer.width,canvasPlayer.height);
+    canvasPlayerObj.FillText('Player 1',20,30,player1Color,'25px Arial');
+    canvasPlayerObj.FillCircle(150,20,boxSize/3,0,2*Math.PI,false,player1Color);
+    canvasPlayerObj.FillText('Player 2',20,70,player2Color,'25px Arial');
+    canvasPlayerObj.FillCircle(150,60,boxSize/3,0,2*Math.PI,false,player2Color);
 
     if(isPlayer1Turn){
-        _canvasPlayerObj.FillText('Player 2 turn',20,120,player2Color,'25px Arial');        
+        canvasPlayerObj.FillText('Player 2 turn',20,120,player2Color,'25px Arial');        
     }else{
-        _canvasPlayerObj.FillText('Player 1 turn',20,120,player1Color,'25px Arial');        
+        canvasPlayerObj.FillText('Player 1 turn',20,120,player1Color,'25px Arial');        
     }
 }
 
@@ -107,41 +107,41 @@ function Dice(x, y, size, color){
     this.color=color;
 
     this.drawDice=function(n){
-        _canvasPlayerObj.StrokeRectangle(this.x, this.y, this.size,this.size,this.color);
+        canvasPlayerObj.StrokeRectangle(this.x, this.y, this.size,this.size,this.color);
         switch(n){
             case 1:
-                _canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
                 break;
             case 2:
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
                 break;
             case 3:
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
                 break;
             case 4:
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
                 break;
             case 5:
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/4,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/2,this.y+this.size/2,10,0,2*Math.PI,false,this.color);
                 
                 break;
             default:
-                _canvasPlayerObj.FillCircle(this.x+this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+5*this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+1*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+3*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
-                _canvasPlayerObj.FillCircle(this.x+5*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+5*this.size/8+10,this.y+this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+1*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+3*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
+                canvasPlayerObj.FillCircle(this.x+5*this.size/8+10,this.y+3*this.size/4,10,0,2*Math.PI,false,this.color);
                 break;
         }
     }
@@ -178,7 +178,7 @@ function Player(color,playerNumber){
         drawPlayerDetails();
         let r=Math.floor(Math.random()*6)+1;//1 to 6;
         dice.drawDice(r);
-        if(r==1){
+        if(r==1 || r==5 || r==6){
             this.isActive=true;
         }
         if(r<=(boxArr.length-1)-this.position && this.isActive){
@@ -189,88 +189,88 @@ function Player(color,playerNumber){
             alert('Player '+this.playerNumber+'wins!!!\nPlease press enter to restart the game.');
         }
     };
-
+        // snake and ladders position
     this.drawPlayer=function(){
         let currentPos=boxArr[this.position];
         if(this.position==58){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=18;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             },2000);
         }
         else if(this.position==98){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            this.position=27;
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            this.position=24;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }
         else if(this.position==74){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=33;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }
         else if(this.position==93){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=66;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }
         else if(this.position==16){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=75;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }
         else if(this.position==6){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=34;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }
         else if(this.position==30){
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
             this.position=87;
             setTimeout(()=>{
                 currentPos=boxArr[this.position];
-                _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
-            },2000);
+                canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            },1000);
         }else{
-            _canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
+            canvasObj.FillCircle(currentPos.x+currentPos.size/2,currentPos.y+currentPos.size/2,boxSize/3,0,2*Math.PI,false,this.color);
         }        
     };
 }
 
 //function to draw image of snake and ladder
 function loadSnakeAndLadder(){
-    _canvasObj.DrawImageWH(snake1,boxSize*1, boxSize*4,100, 250);
-    _canvasObj.DrawImageWH(snake2,boxSize*1, 0,230,400);
-    _canvasObj.DrawImageWH(snake3,boxSize*5,boxSize*2,100,250);
-    _canvasObj.DrawImageWH(snake4,boxSize*6,0,100,200);
-    _canvasObj.Save();
-    _canvasObj.Rotate(0.25);
-    _canvasObj.DrawImageWH(ladder1,boxSize*5, boxSize*3, 30,220);
-    _canvasObj.Restore();
-    _canvasObj.Save();
-    _canvasObj.Rotate(-0.15);
-    _canvasObj.DrawImageWH(ladder2,boxSize*7,boxSize*2.5,30,320);
-    _canvasObj.Restore();
-    _canvasObj.Save();
-    _canvasObj.Rotate(-0.2);
-    _canvasObj.DrawImageWH(ladder3,boxSize*4, boxSize*7, 30,170);
-    _canvasObj.Restore();
+    canvasObj.DrawImageWH(snake1,boxSize*1, boxSize*4,80, 230);
+    canvasObj.DrawImageWH(snake2,boxSize*1, 0,200,400);
+    canvasObj.DrawImageWH(snake3,boxSize*5,boxSize*2,100,250);
+    canvasObj.DrawImageWH(snake4,boxSize*6,0,100,190);
+    canvasObj.Save();
+    canvasObj.Rotate(0.15);
+    canvasObj.DrawImageWH(ladder1,boxSize*4.5, boxSize*1.75, 30,310);
+    canvasObj.Restore();
+    canvasObj.Save();
+    canvasObj.Rotate(-0.4);
+    canvasObj.DrawImageWH(ladder2,boxSize*6,boxSize*4.25,30,280);
+    canvasObj.Restore();
+    canvasObj.Save();
+    canvasObj.Rotate(-0.25);
+    canvasObj.DrawImageWH(ladder3,boxSize*3.5, boxSize*7.5, 30,170);
+    canvasObj.Restore();
 }
 
 
@@ -293,8 +293,8 @@ function Box(x, y, size, index){
 }
 
 Box.prototype.drawBox=function(){
-    _canvasObj.FillRectangle(this.x, this.y, this.size, this.size,this.color);
-    _canvasObj.FillText(this.index+1,this.x+this.size/1.5,this.y+this.size/4,'#fff','10px Arial');
+    canvasObj.FillRectangle(this.x, this.y, this.size, this.size,this.color);
+    canvasObj.FillText(this.index+1,this.x+this.size/1.5,this.y+this.size/4,'#fff','10px Arial');
 }
 
 function drawBoard(){

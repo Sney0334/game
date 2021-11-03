@@ -10,7 +10,7 @@ const buildDom = (html) => {
     <img src="./images/game_logo.jpeg" alt="" style="width:50%;" />
     <br />
     <button id="start-button">
-        <img src="./images/game_start_button.png">
+        <img src="./images/game_start_button.png" width="50">
     </button>
     `);
     const startButton = document.getElementById("start-button");
@@ -21,14 +21,14 @@ const buildDom = (html) => {
   const buildGameScreen = () => {
     buildDom(`
     <canvas id="canvas"></canvas>  
-    <button id="end-button">End Game</button>
+   
     `);
   
-    const endButton = document.getElementById("end-button");
+  /*   const endButton = document.getElementById("end-button");
     endButton.addEventListener("click", buildGameOver);
     const canvas1=document.getElementById('canvas')
     const canvas = new Canvas2dGraphics(canvas1);
-    canvas.init();
+    canvas.init(); */
   };
   /*
   // Third Screen => Game Over

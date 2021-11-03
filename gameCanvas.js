@@ -23,7 +23,7 @@ class Canvas2dGraphics {
     Background = function () {
         //backgroundColor for players thing
          this.context.beginPath();
-        this.context.fillStyle = "#000";
+        this.context.fillStyle = "red";
         this.context.fillRect(0, 0, canvas.width, canvas.height);
         this.context.closePath();
     };
@@ -84,7 +84,7 @@ class Canvas2dGraphics {
             if (strokeColor != null && strokeColor.length != 0) {
                 this.context.strokeStyle = strokeColor;
             } else {
-                this.context.strokeStyle = "#fff";
+                this.context.strokeStyle = "red";
             }
 
             if (lineWidth != null && lineWidth.length != 0) {
@@ -106,7 +106,7 @@ class Canvas2dGraphics {
             if (strokeColor != null && strokeColor.length != 0) {
                 this.context.strokeStyle = strokeColor;
             } else {
-                this.context.strokeStyle = "#fff";
+                this.context.strokeStyle = "red";
             }
 
             if (lineWidth != null && lineWidth.length != 0) {
@@ -131,7 +131,7 @@ class Canvas2dGraphics {
             if (strokeColor != null && strokeColor.length != 0) {
                 this.context.strokeStyle = strokeColor;
             } else {
-                this.context.strokeStyle = "#fff";
+                this.context.strokeStyle = "red";
             }
 
             if (lineWidth != null && lineWidth.length != 0) {
@@ -146,38 +146,7 @@ class Canvas2dGraphics {
         }
     };
 
-    //Draw stroke Polygon
-    StrokePolygon = function (x, y, n, radius, strokeColor, lineWidth) {
-        try {
-            if (n < 3) {
-                return;
-            }
-            let angleBetween = 360 / n;
-            this.context.save();
-
-            for (let i = 0; i < n + 1; i++) {
-                let x0 = x + radius * Math.cos((i * angleBetween * Math.PI) / 180);
-                let y0 = y + radius * Math.sin((i * angleBetween * Math.PI) / 180);
-
-                let x1 =
-                    x + radius * Math.cos(((i + 1) * angleBetween * Math.PI) / 180);
-                let y1 =
-                    y + radius * Math.sin(((i + 1) * angleBetween * Math.PI) / 180);
-                this.StrokeLine(
-                    x0,
-                    y0,
-                    x1,
-                    y1,
-                    strokeColor != null ? strokeColor : "#fff",
-                    lineWidth != null ? lineWidth : 3
-                );
-            }
-            this.context.restore();
-        } catch (err) {
-            console.error("StrokePolygon - " + new Error(err));
-        }
-    };
-
+ 
     //Draw stroke circle
     StrokeCircle = function (
         x,
@@ -194,7 +163,7 @@ class Canvas2dGraphics {
             if (strokeColor != null && strokeColor.length != 0) {
                 this.context.strokeStyle = strokeColor;
             } else {
-                this.context.strokeStyle = "#fff";
+                this.context.strokeStyle = "red";
             }
 
             if (lineWidth != null && lineWidth.length != 0) {
@@ -211,52 +180,7 @@ class Canvas2dGraphics {
         }
     };
 
-    //Draw stroke Ellipse
-    StrokeEllipse = function (
-        x,
-        y,
-        radiusX,
-        radiusY,
-        rotation,
-        startAngle,
-        endAngle,
-        direction,
-        strokeColor,
-        lineWidth
-    ) {
-        try {
-            this.context.save();
-            if (strokeColor != null && strokeColor.length != 0) {
-                this.context.strokeStyle = strokeColor;
-            } else {
-                this.context.strokeStyle = "#fff";
-            }
-
-            if (lineWidth != null && lineWidth.length != 0) {
-                this.context.lineWidth = lineWidth;
-            }
-
-            this.context.beginPath();
-            this.context.ellipse(
-                x,
-                y,
-                radiusX,
-                radiusY,
-                rotation,
-                startAngle,
-                endAngle,
-                direction
-            );
-            this.context.stroke();
-            this.context.closePath();
-            this.context.restore();
-        } catch (err) {
-            console.error("StrokeEllipse - " + new Error(err));
-        }
-    };
-
-    //Fill graphs
-    //Fill Text
+ 
     FillText = function (text, x, y,fillColor, fontSizeAndfontStyle) {
         {
             try {
@@ -283,7 +207,7 @@ class Canvas2dGraphics {
             if (fillColor != null && fillColor.length != 0) {
                 this.context.fillStyle = fillColor;
             } else {
-                this.context.strokeStyle = "#fff";
+                this.context.strokeStyle = "red";
             }
 
             this.context.beginPath();
@@ -299,53 +223,7 @@ class Canvas2dGraphics {
         }
     };
 
-    //Fill Polygon
-    FillPolygon = function (x, y, n, radius, fillColor) {
-        try {
-            if (n < 3) {
-                return;
-            }
-            let angleBetween = 360 / n;
-            this.context.save();
-            if (fillColor != null && fillColor.length != 0) {
-                this.context.strokeStyle = fillColor;
-            } else {
-                this.context.strokeStyle = "#fff";
-            }
-            if (fillColor != null && fillColor.length != 0) {
-                this.context.fillStyle = fillColor;
-            } else {
-                this.context.fillStyle = "#fff";
-            }
-
-            let x0 = x + radius * Math.cos((0 * angleBetween * Math.PI) / 180);
-            let y0 = y + radius * Math.sin((0 * angleBetween * Math.PI) / 180);
-            this.context.moveTo(x0, y0);
-            for (let i = 0; i < n + 1; i++) {
-                if (i != 0) {
-                    x0 = x + radius * Math.cos((i * angleBetween * Math.PI) / 180);
-                    y0 = y + radius * Math.sin((i * angleBetween * Math.PI) / 180);
-                }
-
-                let x1 =
-                    x + radius * Math.cos(((i + 1) * angleBetween * Math.PI) / 180);
-                let y1 =
-                    y + radius * Math.sin(((i + 1) * angleBetween * Math.PI) / 180);
-                this.context.lineTo(x0, y0);
-                this.context.lineTo(x1, y1);
-                //this.context.stroke();
-                if (i == n - 1) {
-                    this.context.closePath();
-                    this.context.fill();
-                }
-
-                //this.StrokeLine(x0,y0,x1,y1,fillColor!=null?fillColor:"#fff");
-            }
-            this.context.restore();
-        } catch (err) {
-            console.error("StrokePolygon - " + new Error(err));
-        }
-    };
+ 
 
     //Fill rectangle
     FillRectangle = function (x, y, width, height, fillColor) {
@@ -353,52 +231,13 @@ class Canvas2dGraphics {
             if (fillColor != null && fillColor.length != 0) {
                 this.context.fillStyle = fillColor;
             } else {
-                this.context.fillStyle = "#fff";
+                this.context.fillStyle = "red";
             }
             this.context.beginPath();
             this.context.fillRect(x, y, width, height);
             this.context.closePath();
         } catch (err) {
             console.error("StrokeTriangle - " + new Error(err));
-        }
-    };
-
-    //Fill Ellipse
-    FillEllipse = function (
-        x,
-        y,
-        radiusX,
-        radiusY,
-        rotation,
-        startAngle,
-        endAngle,
-        direction,
-        fillColor
-    ) {
-        try {
-            this.context.save();
-            if (fillColor != null && fillColor.length != 0) {
-                this.context.fillStyle = fillColor;
-            } else {
-                this.context.fillStyle = "#fff";
-            }
-
-            this.context.beginPath();
-            this.context.ellipse(
-                x,
-                y,
-                radiusX,
-                radiusY,
-                rotation,
-                startAngle,
-                endAngle,
-                direction
-            );
-            this.context.closePath();
-            this.context.fill();
-            this.context.restore();
-        } catch (err) {
-            console.error("StrokeEllipse - " + new Error(err));
         }
     };
 
@@ -417,7 +256,7 @@ class Canvas2dGraphics {
             if (fillColor != null && fillColor.length != 0) {
                 this.context.fillStyle = fillColor;
             } else {
-                this.context.fillStyle = "#fff";
+                this.context.fillStyle = "red";
             }
 
             this.context.beginPath();
@@ -442,7 +281,7 @@ class Canvas2dGraphics {
             console.error('Draw Image - '+new Error(err));
         }
     };
-    //Draw Image with x, y position and with & height
+    //Draw Image with x, y position 
     DrawImageWH(Image, x, y, width, height){
         try{
             if(Image !=undefined && Image.length !=0 ){
@@ -468,6 +307,8 @@ class Canvas2dGraphics {
     };
 
 }
+
+
 //Export the Canvas2dGraphics class
 export {
     Canvas2dGraphics
