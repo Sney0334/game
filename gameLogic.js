@@ -84,7 +84,7 @@ window.addEventListener('click',playGame);
         window.location.reload();
     }
 }); 
-
+//Details of the players on the canvas
 function drawPlayerDetails(){
     canvasPlayerObj.ClearCanvas(0,0,canvasPlayer.width,canvasPlayer.height);
     canvasPlayerObj.FillText('Player 1',20,30,player1Color,'25px Arial');
@@ -99,7 +99,7 @@ function drawPlayerDetails(){
     }
 }
 
-//function Dice
+// Dice and its function
 function Dice(x, y, size, color){
     this.x=x;
     this.y=y;
@@ -148,7 +148,7 @@ function Dice(x, y, size, color){
     
 }
 
-//function play game
+// play game
 function playGame(){
     if(isPlayer1Turn){
         drawBoard();
@@ -167,7 +167,7 @@ function playGame(){
     }
 }
 
-//Player function 
+//Player 
 function Player(color,playerNumber){
     this.position=0;
     this.color=color;
@@ -184,7 +184,7 @@ function Player(color,playerNumber){
         if(r<=(boxArr.length-1)-this.position && this.isActive){
             this.position+=r;
         }
-        //Check if player wins
+        //Check if player wins and display it
         if(this.position==boxArr.length-1){
             alert('Player '+this.playerNumber+'wins!!!\nPlease press enter to restart the game.');
         }
@@ -253,7 +253,7 @@ function Player(color,playerNumber){
     };
 }
 
-//function to draw image of snake and ladder
+//function to draw image of snake and ladder a/c to the above draw player function
 function loadSnakeAndLadder(){
     canvasObj.DrawImageWH(snake1,boxSize*1, boxSize*4,80, 230);
     canvasObj.DrawImageWH(snake2,boxSize*1, 0,200,400);
@@ -274,7 +274,7 @@ function loadSnakeAndLadder(){
 }
 
 
-//function box
+//coloring the box
 function Box(x, y, size, index){
     this.x=x;
     this.y=y;

@@ -54,7 +54,7 @@ class Canvas2dGraphics {
         this.context.restore();
     }
 
-    //Stroke graphs
+    
     //Stroke Text
     StrokeText = function (text, x, y,strokeColor,lineWidth, fontSizeAndfontStyle) {
         {
