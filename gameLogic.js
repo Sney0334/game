@@ -51,13 +51,13 @@ var boxArr=[],
     isPlayer1Turn=Math.random()<0.5?false:true,
     dice=new Dice(20,180,100,'orange');
 
-snake1.src='/images/snake1.png';
-snake2.src='/images/snake2.png';
-snake3.src='/images/snake3.png';
-snake4.src='/images/snake1.png';
-ladder1.src='/images/ladder1.png';
-ladder2.src='/images/ladder1.png';
-ladder3.src='/images/ladder1.png';
+snake1.src='./images/snake1.png';
+snake2.src='./images/snake2.png';
+snake3.src='./images/snake3.png';
+snake4.src='./images/snake1.png';
+ladder1.src='./images/ladder1.png';
+ladder2.src='./images/ladder1.png';
+ladder3.src='./images/ladder1.png';
 
 
 canvas.width=WIDTH;
