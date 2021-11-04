@@ -49,7 +49,7 @@ var boxArr=[],
     player1=new Player(player1Color,1),
     player2=new Player(player2Color,2),
     isPlayer1Turn=Math.random()<0.5?false:true,
-    dice=new Dice(20,180,100,'#fff');
+    dice=new Dice(20,180,100,'orange');
 
 snake1.src='./images/snake1.png';
 snake2.src='./images/snake2.png';
@@ -79,11 +79,11 @@ for(let i=0;i<numCol*numRow;i++){
 }
 
 window.addEventListener('click',playGame);
-window.addEventListener('keydown',(e)=>{
+ window.addEventListener('keydown',(e)=>{
     if(e.keyCode==13){
         window.location.reload();
     }
-});
+}); 
 
 function drawPlayerDetails(){
     canvasPlayerObj.ClearCanvas(0,0,canvasPlayer.width,canvasPlayer.height);
