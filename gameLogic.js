@@ -105,6 +105,7 @@ function Dice(x, y, size, color){
     this.y=y;
     this.size=size;
     this.color=color;
+     
 
     this.drawDice=function(n){
         canvasPlayerObj.StrokeRectangle(this.x, this.y, this.size,this.size,this.color);

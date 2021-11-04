@@ -7,14 +7,16 @@ const buildDom = (html) => {
   // First Screen => Splash Screen
   const buildSplashScreen = () => {
     buildDom(`
-    <img src="./images/game_logo.jpeg" alt="" style="width:50%;" />
+    <img src="./images/game_logo.jpeg" alt="" style="width:75%;" />
     <br />
     <button id="start-button">
-        <img src="./images/game_start_button.png" width="50">
-    </button>
+    <img src="./images/game_start_button.png" width="70">
+ </button>
     `);
+    
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", buildGameScreen);
+    
   };
   
    // Second Screen => Game Screen
