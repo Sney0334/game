@@ -192,7 +192,7 @@ function Player(color,playerNumber){
         }
         //Check if player wins and display it
         if(this.position==boxArr.length-1){
-            alert('Player '+this.playerNumber+'wins!!!\nPlease press enter to restart the game.');
+            alert('Player '+this.playerNumber+ ' '+'wins!!!\nPlease press enter to restart the game.');
         }
     };
         // snake and ladders position
