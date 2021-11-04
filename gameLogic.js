@@ -167,10 +167,10 @@ function playGame(){
     }
 }
 //sound for roll dice 
-/* var diceSound;
+/*  var diceSound;
 function preload(){
-     diceSound =
-} */
+     diceSound = loadSound("sounds/rollDice.mp3")
+} */ 
 
 //Player 
 function Player(color,playerNumber){
@@ -183,6 +183,7 @@ function Player(color,playerNumber){
         drawPlayerDetails();
         let r=Math.floor(Math.random()*6)+1;//1 to 6;
         dice.drawDice(r);
+       // diceSound.play();
         if(r==1 || r==5 || r==6){
             this.isActive=true;
         }
